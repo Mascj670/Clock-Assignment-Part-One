@@ -1,0 +1,59 @@
+r = 255;
+g = 1;
+b = 180;
+
+r1 = 254;
+g1 = 210;
+b1 = 117;
+
+r2 = 204;
+g2 = 255;
+b2 = 245;
+
+function setup() {
+  createCanvas(600, 600);
+  noStroke();
+}
+
+function draw() {
+  background(166, 222, 243);
+  
+  let h = hour();
+  let m = minute();
+  let s = second();
+
+  rectMode(CORNER);
+  
+  //second
+  stroke(255);
+  fill(r, g, b, 90);
+  rect(0,0,s*10,s*10);
+  
+  //minute
+  fill(r1,g1,b1, 60);
+  rect(0,0,m*10, m*10);
+  
+  //hour
+  fill(r2, g2, b2, 60);
+  rect(0,0,h*15,h*15);
+  
+  console.log(`it is ${h}:${m}:${s} o'clock`);
+  
+}
+
+
+function mousePressed(){
+ 
+  r = random(0,255);
+  g = random(0,255);
+  b = random(0,255);
+
+  r1 = random(0,255);
+  g1 = random(0,255);
+  b1 = random(0,255);
+
+  r2 = random(0,255);
+  g2 = random(0,255);
+  b2 = random(0,255);
+  
+}
