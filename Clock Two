@@ -1,0 +1,38 @@
+function setup() {
+  createCanvas(600, 600);
+  angleMode(DEGREES);
+  noStroke();
+}
+
+function draw() {
+  
+ 
+  background(255);
+  
+  let h = hour();
+  let m = minute();
+  let s = second();
+  
+  translate(width/2, height/2);
+  rotate(-90);
+  
+  fill(0);
+  ellipse(0, 0, 10, 10);
+  
+  //hour
+  fill(1, 1, 255, 80);
+  arc(150, 150, 150, 150, 0, h*15);
+  
+  
+  //minute
+  fill(1, 255, 1, 80);
+  arc(150, 150, 250, 250, 0, m *6);
+  
+  
+  //Second
+  fill(255, 1, 1, 80);
+  rectMode(CENTER);
+  rect(width/2, height/2, s * 20);
+  
+  
+}
