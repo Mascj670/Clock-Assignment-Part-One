@@ -1,0 +1,31 @@
+function setup() {
+  createCanvas(600, 600);
+  noStroke();
+}
+
+function draw() {
+  background(166, 222, 243);
+  
+  let h = hour();
+  let m = minute();
+  let s = second();
+  
+  translate(width/2, height/2);
+  rectMode(CENTER);
+  
+  //second
+  stroke(255);
+  fill(255, 1, 180, 90);
+  rect(0,0,s*10,s*10);
+
+  //minute
+  fill(254,210,117, 60);
+  rect(0,0,500,500, m*10);
+  
+  //hour
+  fill(204,255,245, 60);
+  rect(0,0,300,300, h*15);
+  
+  console.log(`it is ${h}:${m}:${s} o'clock`);
+  
+}
