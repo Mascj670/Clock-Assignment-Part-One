@@ -1,0 +1,188 @@
+
+// Random Ball Placement
+var xBall = Math.floor(Math.random() * 300) + 50;
+var yBall = 50;
+var xSpeed = (2, 7);
+var ySpeed = (-7, -2);
+var score = 0;
+
+var rBall = 217;
+var gBall = 195;
+var bBall = 247;
+
+function setup() {
+  createCanvas(600, 600);
+  noStroke();
+  console.log("Get to 10 points for suprise ;)")
+}
+
+function draw() {
+  background(15);
+  
+// Calling clock
+clock();
+
+// Paddle  
+let x = mouseX;
+fill(255);
+rect(x, 550, 90, 15);
+
+// Functions
+move();
+ball();
+bounce();
+timeSpent();
+gameOver();
+paddle();
+
+
+// Score
+fill(217, 195, 247);
+textSize(24);
+text("Score: " + score, 55, 25);  
+  
+if(score >= 10){
+  textSize(75);
+  text("Time Wasted", 300, 300);
+  noLoop();
+  secondsPlayed();
+  
+}
+
+
+}
+
+// Main clock 
+function clock()
+
+{
+  fill(" lightblue");
+  textAlign(CENTER);
+  textSize(75);
+  let Hour = hour();
+  let min = minute();
+  let secs = second();
+  let noon = Hour >= 12? " PM" : " AM"
+  if(min < 10)
+    min = "0"+min
+  Hour%=12
+  text(Hour+":"+min+":"+secs+noon, width/2, 150);
+}
+
+
+// Time spent 
+function timeSpent(){
+  textSize(25);
+  let secsPlayed = second();
+  fill(217, 195, 247);
+}
+
+
+
+// Ball Moves
+function move() {
+  xBall += xSpeed;
+  yBall += ySpeed;  
+}
+
+function bounce() {
+  
+  if (xBall < 10 ||
+    xBall > 600 - 10) {
+    xSpeed *= -1;
+  }
+  if (yBall < 10 ||
+    yBall > 600 - 10) {
+    ySpeed *= -1;
+  }
+}
+
+
+// Ball
+function ball() {
+  noStroke();
+  fill(rBall, gBall, bBall);
+  ellipse(xBall, yBall, 20, 20);
+  
+}
+
+// Bounce off Paddle
+function paddle() {
+  if ((xBall > mouseX &&
+      xBall < mouseX + 90) &&
+    (yBall + 10 >= 550)) {
+    xSpeed *= -1;
+    ySpeed *= -1;
+    score++;
+
+  }
+}
+
+
+// Increase ball speed 
+function mousePressed() {
+  
+  xSpeed *= 1.1;
+  ySpeed *= 1.1;
+  
+}
+
+// Seconds played 
+function secondsPlayed(){
+  
+  let currentSeconds = int(millis() / 1000);
+  textSize(20)
+  fill("lightBlue");
+  text(currentSeconds + "Seconds", 470, 325);
+
+} 
+
+// Score
+function Score(){
+
+  fill(217, 195, 247);
+  textSize(24);
+  text("Score: " + score, 55, 25);  
+  
+}
+
+
+function cover(){
+  
+  fill(15);
+  rect(0, 0, 600 , 200);
+  
+}
+
+
+
+
+function gameOver(){
+  
+   if(yBall> 590){
+    
+    stroke(15);
+    fill(15);
+    ellipse(xBall, yBall, 20, 20);
+     
+    
+    let x = mouseX;
+    fill(15);
+    rect(x, 550, 90, 15); 
+    
+    textSize(75);
+    fill( 255, 0, 0);
+    text(" GAME OVER :( ", 300, 300)
+    cover();
+    noLoop();
+     
+   }  
+}
+
+
+function cover(){
+  
+  fill(15);
+  rect(0, 0, 600 , 200);
+}
+
